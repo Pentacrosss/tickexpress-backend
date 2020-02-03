@@ -12,7 +12,7 @@ class RutasController extends Controller
     //buscar las rutas
     public function searchRutas(Request $r){
         $data = DB::table('consulta_ruta')
-        ->where('lugar_salida','like','%'.strtoupper($r->origen).'%')
+        ->where('lugar_salida','like','%'.strtoupper($r->origen).'%')->where('lugar_destino','like','%'.strtoupper($r->destino).'%')
         ->get();
         if ($data!='[]') {
             return response()->json(["RES"=>$data]);
@@ -40,6 +40,15 @@ class RutasController extends Controller
         }
     }
 
+    //devolver todos los datos de los buses
+    public function listBuses(Request $r){
+        $data = DB::table('consultar_buses')->get();
+        if ($data!='[]') {
+            return response()->json(["RES"=>$data]);
+        } else {
+            return response()->json(["RES"=>false]);
+        }
+    }
     //devolver las coperativas
     public function listLugares(Request $r){
         $data = DB::table('consultar_lugares')->get();

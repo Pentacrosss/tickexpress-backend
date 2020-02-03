@@ -27,3 +27,4 @@ Route::get('/listCooperativas', 'RutasController@cooperativas');
 Route::post('/registerBuses', 'RutasController@registerBuses');
 Route::post('/registerDestinos', 'RutasController@registerDestinos');
 Route::get('/listLugares', 'RutasController@listLugares');
+Route::get('/listBusesAll', 'RutasController@listBuses');
