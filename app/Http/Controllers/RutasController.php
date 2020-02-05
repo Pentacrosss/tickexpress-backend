@@ -12,7 +12,7 @@ class RutasController extends Controller
     //buscar las rutas
     public function searchRutas(Request $r){
         $data = DB::table('consulta_ruta')
-        ->where('lugar_salida','like','%'.strtoupper($r->origen).'%')->where('lugar_destino','like','%'.strtoupper($r->destino).'%')
+        ->where('lugar_salida','like','%'.strtoupper($r->origen).'%')->where('lugar_destino','like','%'.strtoupper($r->destino).'%')->where('fecha','like','%'.strtoupper($r->fecha).'%')
         ->get();
         if ($data!='[]') {
             return response()->json(["RES"=>$data]);
